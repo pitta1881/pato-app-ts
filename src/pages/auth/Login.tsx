@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import { authUser } from '../../services/AuthService';
 import stylesFormAuth from './formAuth.module.css';
 
 export default function Login() {
+    const history = useHistory();
     const { authEvent } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,6 +20,7 @@ export default function Login() {
         }).then(isLogued => {
             if (isLogued) {
                 authEvent('login')
+                history.push("/");
             } else {
                 setShowErrorCredenciales(true);
             };
@@ -28,7 +30,7 @@ export default function Login() {
 
     return (
         <>
-            <div className={`${stylesFormAuth.formAuth} ${stylesFormAuth.login_form_1}`}>
+            <div className={`${stylesFormAuth.formAuth} ${stylesFormAuth.login_form_1} p-5 my-2 d-flex justify-content-center flex-column`}>
                 <h3>LOGIN</h3>
                 <form action="">
                     <div className="form-group my-2">

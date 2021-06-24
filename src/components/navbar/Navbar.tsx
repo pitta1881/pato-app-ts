@@ -6,7 +6,7 @@ export default function Navbar() {
     const { isAuth } = useContext(AuthContext);
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top flex-column" id="mainNav">
+            <nav className="navbar navbar-expand-lg bg-secondary text-uppercase flex-column py-2">
                 <div className="container">
                     <Link to="/" className="navbar-brand">Start Bootstrap</Link>
                     <div className="collapse navbar-collapse" id="navbarResponsive">

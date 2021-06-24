@@ -35,31 +35,33 @@ function App() {
   const contextoAuth = { isAuth, authEvent }
 
   return (
-    <AuthContext.Provider value={contextoAuth}>
-      <Router>
-        <Navbar />
-        <div className="masthead bg-primary text-white text-center d-flex justify-content-center">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/todo">
-              <TodoModule />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/logout">
-              <Logout />
-            </Route>
-          </Switch>
-        </div>
-        <Footer />
-      </Router>
-    </AuthContext.Provider>
+    <div className="d-flex flex-column justify-content-around" style={{ minHeight: "100vh" }}>
+      <AuthContext.Provider value={contextoAuth}>
+        <Router>
+          <Navbar />
+          <div className="bg-primary text-white text-center d-flex justify-content-center flex-grow-1">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/todo">
+                <TodoModule />
+              </Route>
+              <Route exact path="/about">
+                <About />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/logout">
+                <Logout />
+              </Route>
+            </Switch>
+          </div>
+          <Footer />
+        </Router>
+      </AuthContext.Provider>
+    </div>
   );
 }
 
