@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Logout(props: any) {
+    const { authEvent } = useContext(AuthContext);
 
     useEffect(() => {
-        props.handleAuth(false)
+        authEvent('logout')
     })
 
     return (

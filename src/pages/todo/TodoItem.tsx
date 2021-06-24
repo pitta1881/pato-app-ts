@@ -1,9 +1,8 @@
 import React from 'react'
-import Iitem from './Iitem';
+import IItem from '../../interfaces/IItem';
 
-export default function TodoItem(props: any) {
-    let item: Iitem = props.item;
+export default function TodoItem({ item, clickDeleteHandler }: { item: IItem, clickDeleteHandler: Function }) {
     return (
-        <li className="list-group-item" onClick={() => props.clickDeleteHandler(item.id)}>{item.id}- {item.nombre}</li>
+        <li className="list-group-item" onClick={() => clickDeleteHandler(item.id)}>{item.id}- {item.nombre}</li>
     )
 }

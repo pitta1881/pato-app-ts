@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext';
 
-export default function Navbar(props: any) {
+export default function Navbar() {
+    const { isAuth } = useContext(AuthContext);
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top flex-column" id="mainNav">
@@ -12,7 +14,7 @@ export default function Navbar(props: any) {
                             <li className="nav-item mx-0 mx-lg-1">
                                 <Link to="/" className="nav-link py-3 px-0 px-lg-3 rounded">Home</Link>
                             </li>
-                            {props.auth && <li className="nav-item mx-0 mx-lg-1">
+                            {isAuth && <li className="nav-item mx-0 mx-lg-1">
                                 <Link to="/todo" className="nav-link py-3 px-0 px-lg-3 rounded">Mi App TODO</Link>
                             </li>}
                             <li className="nav-item mx-0 mx-lg-1">
@@ -23,10 +25,10 @@ export default function Navbar(props: any) {
                 </div>
                 <div className="container">
                     <ul className="d-flex navbar-nav ms-auto">
-                        {!props.auth && <li className="nav-item mx-0 mx-lg-1">
+                        {!isAuth && <li className="nav-item mx-0 mx-lg-1">
                             <Link to="/login" className="nav-link py-3 px-0 px-lg-3 rounded">LOGIN</Link>
                         </li>}
-                        {props.auth && <li className="nav-item mx-0 mx-lg-1">
+                        {isAuth && <li className="nav-item mx-0 mx-lg-1">
                             <Link to="/logout" className="nav-link py-3 px-0 px-lg-3 rounded">LOGOUT</Link>
                         </li>}
                     </ul>

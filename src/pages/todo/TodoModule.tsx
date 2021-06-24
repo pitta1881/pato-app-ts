@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Todo from './Todo'
-import Iitem from './Iitem'
+import IItem from '../../interfaces/IItem'
 import { Redirect } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
 
-export default function TodoModule(props: any) {
-    const [listaToDo, setLista] = useState<Iitem[]>([]);
+export default function TodoModule() {
+    const { isAuth } = useContext(AuthContext);
+
+    const [listaToDo, setLista] = useState<IItem[]>([]);
     const [item, setItem] = useState<string>('');
 
     useEffect(() => {
-        const lista: Iitem[] = JSON.parse(sessionStorage.getItem('listaToDo') || '[]');
+        const lista: IItem[] = JSON.parse(sessionStorage.getItem('listaToDo') || '[]');
         lista.length > 0 && setLista(lista);
     }, [])
 
@@ -16,7 +19,7 @@ export default function TodoModule(props: any) {
     function addToList(e: any) {
         e.preventDefault();
         if (item) {
-            const newItem: Iitem = { id: listaToDo.length, nombre: item, check: false }
+            const newItem: IItem = { id: listaToDo.length, nombre: item, check: false }
             setItem('');
             setLista([...listaToDo, newItem]);
             sessionStorage.setItem('listaToDo', JSON.stringify([...listaToDo, newItem]))
@@ -28,7 +31,7 @@ export default function TodoModule(props: any) {
     }
 
     function checkReady(indice: number) {
-        const newList = listaToDo.map((item: Iitem) => {
+        const newList = listaToDo.map((item: IItem) => {
             if (item.id === indice) {
                 const updatedItem = {
                     ...item,
@@ -44,17 +47,15 @@ export default function TodoModule(props: any) {
 
     return (
         <>
-            <div className="masthead container my-2 rounded mx-auto bg-light shadow">
-                {props.auth ?
-                    <Todo listaToDo={listaToDo}
-                        item={item}
-                        handleInput={handleInputChange}
-                        addToList={addToList}
-                        checkReady={checkReady}></Todo>
-                    :
-                    <Redirect to='/' />
-                }
-            </div>
+            {isAuth ?
+                <Todo listaToDo={listaToDo}
+                    item={item}
+                    handleInput={handleInputChange}
+                    addToList={addToList}
+                    checkReady={checkReady}></Todo>
+                :
+                <Redirect to='/' />
+            }
         </>
     )
 }
