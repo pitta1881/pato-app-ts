@@ -12,7 +12,6 @@ import Home from './pages/home/Home'
 import About from './pages/about/About'
 import TodoModule from './pages/todo/TodoModule';
 import Login from './pages/auth/Login';
-import Logout from './pages/auth/Logout';
 import { AuthContext } from './context/AuthContext';
 
 function App() {
@@ -52,9 +51,6 @@ function App() {
               </Route>
               <Route exact path="/login">
                 <Login />
-              </Route>
-              <Route exact path="/logout">
-                <Logout />
               </Route>
             </Switch>
           </div>

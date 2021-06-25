@@ -1,9 +1,17 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 
 export default function Navbar() {
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth, authEvent } = useContext(AuthContext);
+    const history = useHistory();
+
+    function handleLogout() {  //aca simulo la llamada a la api para loguearse
+        authEvent('logout')
+        history.push('/');
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-secondary text-uppercase flex-column py-2">
@@ -25,12 +33,14 @@ export default function Navbar() {
                 </div>
                 <div className="container">
                     <ul className="d-flex navbar-nav ms-auto">
-                        {!isAuth && <li className="nav-item mx-0 mx-lg-1">
-                            <Link to="/login" className="nav-link py-3 px-0 px-lg-3 rounded">LOGIN</Link>
-                        </li>}
-                        {isAuth && <li className="nav-item mx-0 mx-lg-1">
-                            <Link to="/logout" className="nav-link py-3 px-0 px-lg-3 rounded">LOGOUT</Link>
-                        </li>}
+                        {!isAuth &&
+                            <li className="nav-item mx-0 mx-lg-1">
+                                <Link to="/login" className="nav-link py-3 px-0 px-lg-3 rounded">LOGIN</Link>
+                            </li>}
+                        {isAuth &&
+                            <li className="nav-item mx-0 mx-lg-1">
+                                <Button onClick={() => handleLogout()} variant="link" className="nav-link py-3 px-0 px-lg-3 rounded">LOGOUT</Button>
+                            </li>}
                     </ul>
                 </div>
             </nav>
