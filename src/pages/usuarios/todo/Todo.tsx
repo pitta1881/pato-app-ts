@@ -1,5 +1,5 @@
 import React from 'react'
-import IItem from '../../interfaces/IItem'
+import IItem from '../../../interfaces/IItem'
 import TodoItem from './TodoItem'
 
 export default function Todo(props: any) {

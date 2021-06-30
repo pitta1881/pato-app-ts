@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Todo from './Todo'
-import IItem from '../../interfaces/IItem'
+import IItem from '../../../interfaces/IItem'
 import { Redirect } from 'react-router';
-import { AuthContext } from '../../context/AuthContext';
 
 export default function TodoModule() {
-    const { isAuth } = useContext(AuthContext);
 
     const [listaToDo, setLista] = useState<IItem[]>([]);
     const [item, setItem] = useState<string>('');
@@ -47,15 +45,12 @@ export default function TodoModule() {
 
     return (
         <>
-            {isAuth ?
-                <Todo listaToDo={listaToDo}
-                    item={item}
-                    handleInput={handleInputChange}
-                    addToList={addToList}
-                    checkReady={checkReady}></Todo>
-                :
-                <Redirect to='/' />
-            }
+            <Todo listaToDo={listaToDo}
+                item={item}
+                handleInput={handleInputChange}
+                addToList={addToList}
+                checkReady={checkReady}></Todo>
+
         </>
     )
 }

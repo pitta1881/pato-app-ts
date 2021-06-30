@@ -12,6 +12,18 @@ export default function Navbar() {
         history.push('/');
     }
 
+    const authNavItems = () => {
+        return
+        (<>
+            <li className="nav-item mx-0 mx-lg-1">
+                <Link to="/usuario" className="nav-link py-3 px-0 px-lg-3 rounded">Mi Perfil</Link>
+            </li>
+            <li className="nav-item mx-0 mx-lg-1">
+                <Link to="/usuario/todo" className="nav-link py-3 px-0 px-lg-3 rounded">APPS</Link>
+            </li>
+        </>)
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-secondary text-uppercase flex-column py-2">
@@ -22,9 +34,7 @@ export default function Navbar() {
                             <li className="nav-item mx-0 mx-lg-1">
                                 <Link to="/" className="nav-link py-3 px-0 px-lg-3 rounded">Home</Link>
                             </li>
-                            {isAuth && <li className="nav-item mx-0 mx-lg-1">
-                                <Link to="/todo" className="nav-link py-3 px-0 px-lg-3 rounded">Mi App TODO</Link>
-                            </li>}
+                            {isAuth && authNavItems()}
                             <li className="nav-item mx-0 mx-lg-1">
                                 <Link to="/about" className="nav-link py-3 px-0 px-lg-3 rounded">About</Link>
                             </li>
