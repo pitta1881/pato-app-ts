@@ -36,6 +36,7 @@ export default function NavbarComponent() {
                                 <Nav.Link as={Link} to="/usuario">Mi Perfil</Nav.Link>
                                 <NavDropdown title="APPS" id="basic-nav-dropdown">
                                     <NavDropdown.Item as={Link} to="/apps/todo">ToDo List</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/apps/paises">Paises</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item as={Link} to="/apps">Ver Todas</NavDropdown.Item>
                                 </NavDropdown>
