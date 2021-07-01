@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch } from 'react'
+import React, { createContext } from 'react'
 
 export const AuthContext = createContext<{
     isAuth: boolean;

@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Todo from './Todo'
 import IItem from '../../../interfaces/IItem'
-import { Redirect } from 'react-router';
 
 export default function TodoModule() {
 

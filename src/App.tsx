@@ -7,8 +7,8 @@ import {
 import { AuthContext } from './context/AuthContext';
 import RoutesIndex from './routes/RoutesIndex';
 import AuthReducer from './reducer/AuthReducer';
-import Navbar from './components/navbar/Navbar';
-import Footer from './components/footer/Footer';
+import NavbarComponent from './components/navbar/NavbarComponent';
+import FooterComponent from './components/footer/FooterComponent';
 
 function App() {
 
@@ -20,11 +20,11 @@ function App() {
     <Router>
       <div className="d-flex flex-column justify-content-around" style={{ minHeight: "100vh" }}>
         <AuthContext.Provider value={contextoAuth}>
-          <Navbar />
-          <div className="bg-primary text-white text-center d-flex justify-content-center flex-grow-1">
+          <NavbarComponent />
+          <div className="bg-primary text-white text-center d-flex justify-content-center flex-grow-1 py-4">
             <RoutesIndex />
           </div>
-          <Footer />
+          <FooterComponent />
         </AuthContext.Provider>
       </div>
     </Router>

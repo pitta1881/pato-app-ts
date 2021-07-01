@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Footer() {
+export default function FooterComponent() {
     return (
         <>
             <footer className="footer text-center py-5">
@@ -33,7 +33,7 @@ export default function Footer() {
                 </div>
             </footer>
             <div className="copyright py-2 text-center text-white">
-                <div className="container"><small>Copyright &copy; Your Website 2021</small></div>
+                <div className="container"><small>Copyright &copy; Patricio Pittavino - 2021</small></div>
             </div>
         </>
     )

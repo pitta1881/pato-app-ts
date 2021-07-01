@@ -9,6 +9,7 @@ import Home from '../pages/home/Home';
 import { AuthGuard as PrivateRoute } from '../guard/AuthGuard'
 import NotFound from '../pages/404/NotFound';
 import RoutesUsuario from './RoutesUsuario';
+import RoutesApps from './RoutesApps';
 
 export default function RoutesIndex() {
   return (
@@ -16,8 +17,11 @@ export default function RoutesIndex() {
       <Route exact path="/">
         <Home />
       </Route>
-      <PrivateRoute exact path="/usuario" >
+      <PrivateRoute exact={false} path="/usuario" >
         <RoutesUsuario />
+      </PrivateRoute>
+      <PrivateRoute exact={false} path="/apps" >
+        <RoutesApps />
       </PrivateRoute>
       <Route exact path="/about">
         <About />
