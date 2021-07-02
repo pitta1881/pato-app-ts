@@ -1,0 +1,8 @@
+.paises_card_header {
+    cursor: pointer;
+    text-align: left;
+}
+
+.paises_img {
+    border: 2px solid black;
+}
