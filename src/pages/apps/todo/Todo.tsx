@@ -5,9 +5,9 @@ import TodoItem from './TodoItem'
 export default function Todo(props: any) {
     return (
         <>
-            <div className="container d-flex align-items-center flex-column">
+            <div className="d-flex align-items-center flex-column">
 
-                <div className="row col-6 m-1 p-4">
+                <div className="row m-1 p-4">
                     <div className="col">
                         <div className="p-1 h1 text-center mx-auto display-inline-block">
                             <i className="fa fa-check bg-primary text-white rounded p-2"></i>
@@ -15,7 +15,7 @@ export default function Todo(props: any) {
                             </div>
                     </div>
                 </div>
-                <div className="row col-6 m-1">
+                <div className="row m-1">
                     <div className="col col-11 mx-auto">
                         <div className="">
                             <form
