@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Card } from 'react-bootstrap'
+import DolarModule from '../Dolar/DolarModule'
 import PaisesModule from '../Paises/PaisesModule'
 import TodoModule from '../todo/TodoModule'
 import styles from './AppDashboard.module.scss'
@@ -27,6 +28,14 @@ export default function AppsDashboard() {
                     </Card.Text>
                     </Card.Body>
                 </Card>
+                <Card className={styles.card + ' m-2 p-2'} onClick={() => setCurrentApp('DolarModule')}>
+                    <Card.Img variant="top" src='assets/dolar.jpg' />
+                    <Card.Body>
+                        <Card.Text>
+                            Dolar App
+                    </Card.Text>
+                    </Card.Body>
+                </Card>
             </div>
             {currentApp !== '' &&
                 <div className={"mx-2 " + styles.showApp}>
@@ -34,7 +43,9 @@ export default function AppsDashboard() {
                         ? <TodoModule />
                         : currentApp === 'PaisesModule'
                             ? <PaisesModule />
-                            : 'No se encuentra la app'
+                            : currentApp === 'DolarModule'
+                                ? <DolarModule />
+                                : 'No se encuentra la app'
                     }
                 </div>
             }

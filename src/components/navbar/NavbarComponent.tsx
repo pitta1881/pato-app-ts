@@ -37,6 +37,7 @@ export default function NavbarComponent() {
                                 <NavDropdown title="APPS" id="basic-nav-dropdown">
                                     <NavDropdown.Item as={Link} to="/apps/todo">ToDo List</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/apps/paises">Paises</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/apps/dolar">Dolar Hoy</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item as={Link} to="/apps">Ver Todas</NavDropdown.Item>
                                 </NavDropdown>

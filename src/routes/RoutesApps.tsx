@@ -6,6 +6,7 @@ import {
 import { AuthGuard as PrivateRoute } from '../guard/AuthGuard'
 import NotFound from '../pages/404/NotFound';
 import AppsDashboard from '../pages/apps/AppsDashboard/AppsDashboard';
+import DolarModule from '../pages/apps/Dolar/DolarModule';
 import PaisesModule from '../pages/apps/Paises/PaisesModule';
 import TodoModule from '../pages/apps/todo/TodoModule';
 
@@ -20,6 +21,9 @@ export default function RoutesApps() {
       </PrivateRoute>
       <PrivateRoute exact path="/apps/paises" >
         <PaisesModule />
+      </PrivateRoute>
+      <PrivateRoute exact path="/apps/dolar" >
+        <DolarModule />
       </PrivateRoute>
       <Route component={NotFound} />
     </Switch>
