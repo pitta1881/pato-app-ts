@@ -3,15 +3,19 @@ import React, { useEffect, useState } from 'react'
 import IDolar from '../../../interfaces/IDolar';
 import dolarEstilos from './Dolar.module.scss'
 import ReactLoading from "react-loading";
-import tokenBna from '../../../env/env.dolar';
+import { envDolar } from '../../../env/env.dolar';
 
 export default function DolarModule() {
     const [dolarObj, setDolarObj] = useState<IDolar | null>()
 
     useEffect(() => {
-        axios.get<IDolar>(tokenBna.urlBase + tokenBna.subdomDolar)
+        axios.get<IDolar[]>(envDolar.urlBase + envDolar.subdomDolar, {
+            headers: {
+                'Authorization': `BEARER ${envDolar.token}`
+            }
+        })
             .then((retorno) => {
-                setDolarObj(retorno.data)
+                setDolarObj(retorno.data[retorno.data.length - 1])
             })
             .catch(err => console.log(err))
     }, [])
@@ -19,11 +23,16 @@ export default function DolarModule() {
     return (
         !dolarObj
             ? <ReactLoading type='bubbles' color='#fff' height={'unset'} width={375} />
-            : <>
-                <h1>Dolar</h1>
-                <p>Fecha: {dolarObj.fecha}</p>
-                <p>Compra: {dolarObj.compra}</p>
-                <p>Venta: {dolarObj.venta}</p>
-            </>
+            :
+            <div className="d-flex flex-column justify-content-center">
+                <h1>Dolar Hoy</h1>
+                <div className="row">
+                    <p>Fecha: {dolarObj.d}</p>
+                </div>
+                <div className="row">
+                    <p>Precio: ${dolarObj.v}</p>
+                </div>
+                <small>Fuente: https://estadisticasbcra.com</small>
+            </div>
     )
 }

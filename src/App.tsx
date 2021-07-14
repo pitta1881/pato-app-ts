@@ -2,7 +2,6 @@ import React, { useReducer } from 'react';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
-import * as dotenv from 'dotenv';
 
 
 //propias
@@ -13,7 +12,6 @@ import NavbarComponent from './components/navbar/NavbarComponent';
 import FooterComponent from './components/footer/FooterComponent';
 
 function App() {
-  dotenv.config();
 
   const initialState = JSON.parse(sessionStorage.getItem('isLogged') || 'false') || false;
   const [isAuth, authEvent] = useReducer(AuthReducer, initialState);
